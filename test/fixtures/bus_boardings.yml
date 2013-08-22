@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stop_id: MyString
+  on_street: MyString
+  cross_street: MyString
+  routes: MyString
+  boardings: 1.5
+  alightings: 1.5
+  month_beginning: 2013-08-21 18:36:43
+  daytype: MyString
+  longitude: 1.5
+  latitude: 1.5
+
+two:
+  stop_id: MyString
+  on_street: MyString
+  cross_street: MyString
+  routes: MyString
+  boardings: 1.5
+  alightings: 1.5
+  month_beginning: 2013-08-21 18:36:43
+  daytype: MyString
+  longitude: 1.5
+  latitude: 1.5

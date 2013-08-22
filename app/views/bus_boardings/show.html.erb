@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stop:</strong>
+  <%= @bus_boarding.stop_id %>
+</p>
+
+<p>
+  <strong>On street:</strong>
+  <%= @bus_boarding.on_street %>
+</p>
+
+<p>
+  <strong>Cross street:</strong>
+  <%= @bus_boarding.cross_street %>
+</p>
+
+<p>
+  <strong>Routes:</strong>
+  <%= @bus_boarding.routes %>
+</p>
+
+<p>
+  <strong>Boardings:</strong>
+  <%= @bus_boarding.boardings %>
+</p>
+
+<p>
+  <strong>Alightings:</strong>
+  <%= @bus_boarding.alightings %>
+</p>
+
+<p>
+  <strong>Month beginning:</strong>
+  <%= @bus_boarding.month_beginning %>
+</p>
+
+<p>
+  <strong>Daytype:</strong>
+  <%= @bus_boarding.daytype %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @bus_boarding.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @bus_boarding.latitude %>
+</p>
+
+<%= link_to 'Edit', edit_bus_boarding_path(@bus_boarding) %> |
+<%= link_to 'Back', bus_boardings_path %>

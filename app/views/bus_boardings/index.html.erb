@@ -1,0 +1,45 @@
+<h1>Listing bus_boardings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stop</th>
+      <th>On street</th>
+      <th>Cross street</th>
+      <th>Routes</th>
+      <th>Boardings</th>
+      <th>Alightings</th>
+      <th>Month beginning</th>
+      <th>Daytype</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bus_boardings.each do |bus_boarding| %>
+      <tr>
+        <td><%= bus_boarding.stop_id %></td>
+        <td><%= bus_boarding.on_street %></td>
+        <td><%= bus_boarding.cross_street %></td>
+        <td><%= bus_boarding.routes %></td>
+        <td><%= bus_boarding.boardings %></td>
+        <td><%= bus_boarding.alightings %></td>
+        <td><%= bus_boarding.month_beginning %></td>
+        <td><%= bus_boarding.daytype %></td>
+        <td><%= bus_boarding.longitude %></td>
+        <td><%= bus_boarding.latitude %></td>
+        <td><%= link_to 'Show', bus_boarding %></td>
+        <td><%= link_to 'Edit', edit_bus_boarding_path(bus_boarding) %></td>
+        <td><%= link_to 'Destroy', bus_boarding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bus boarding', new_bus_boarding_path %>

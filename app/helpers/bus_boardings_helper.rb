@@ -1,0 +1,2 @@
+module BusBoardingsHelper
+end

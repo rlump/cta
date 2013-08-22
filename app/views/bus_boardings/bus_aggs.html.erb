@@ -1,0 +1,101 @@
+<h1>bus_aggs !!! </h1>
+
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
+</style>
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX4vt2G-KVYoqM7gYhs5q1uL0VZ-AjTPY&sensor=false">
+</script>
+<script type="text/javascript">
+  function initialize() {
+    var mapOptions = {
+      center: new google.maps.LatLng(41.8813, -87.6978),
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+
+    var locations = [
+    <% @top_five_boardings.each do |bus_boarding| %>
+      ['<%=bus_boarding.cross_street %>', <%=bus_boarding.latitude %>, <%=bus_boarding.longitude %>, 4],
+      <%end%>
+    ];
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<p>Number bus boarding records <%= @count %></p>
+
+<p>Average number of boardings acrross all data <%= @avg_boardings %> </p>
+
+
+<h2>Top five</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Stop</th>
+      <th>On street</th>
+      <th>Cross street</th>
+      <th>Routes</th>
+      <th>Boardings</th>
+      <th>Alightings</th>
+      <th>Month beginning</th>
+      <th>Daytype</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @top_five_boardings.each do |bus_boarding| %>
+      <tr>
+        <td><%= bus_boarding.stop_id %></td>
+        <td><%= bus_boarding.on_street %></td>
+        <td><%= bus_boarding.cross_street %></td>
+        <td><%= bus_boarding.routes %></td>
+        <td><%= bus_boarding.boardings %></td>
+        <td><%= bus_boarding.alightings %></td>
+        <td><%= bus_boarding.month_beginning %></td>
+        <td><%= bus_boarding.daytype %></td>
+        <td><%= bus_boarding.longitude %></td>
+        <td><%= bus_boarding.latitude %></td>
+        <td><%= link_to 'Show', bus_boarding %></td>
+        <td><%= link_to 'Edit', edit_bus_boarding_path(bus_boarding) %></td>
+        <td><%= link_to 'Destroy', bus_boarding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Top five on Map</h2>
+<body>
+  <div id="map-canvas"/>
+</body>
+
+
+
